@@ -13,7 +13,7 @@
 
     <name>dropauth</name>
     <description>Hassle-free token based authentication for Dropwizard.</description>
-    <url>http://klickreform.github.io/dropkit/</url>
+    <url>http://klickreform.github.io/dropauth</url>
     <inceptionYear>2015</inceptionYear>
     <organization>
         <name>KlickReform</name>
@@ -29,7 +29,7 @@
     </licenses>
 
     <scm>
-        <url>https://github.com/KlickReform/dropkit</url>
+        <url>https://github.com/KlickReform/dropauth</url>
     </scm>
 
     <!-- Set project properties -->
