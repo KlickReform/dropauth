@@ -1,0 +1,18 @@
+[
+	{
+		"id": "1",
+		"secret": "secret123",
+		"name": "WebApp",		
+		"description": "This is the WebApp.",
+		"website": "http://www.google.de",
+		"logoUrl": "http://www.logo.de/logo.png"
+	},
+	{
+		"id": "2",
+		"secret": "secret321",
+		"name": "iPhoneApp",		
+		"description": "This is the iPhone App.",
+		"website": "http://www.google.de/phone",
+		"logoUrl": "http://www.logo.de/logo-mobile.png"
+	}
+]

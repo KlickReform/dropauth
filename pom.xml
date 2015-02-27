@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+<!-- ////// PROJECT INFORMATION ////// -->
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>de.klickreform</groupId>
+    <artifactId>dropauth</artifactId>
+    <version>0.1</version>
+    <packaging>jar</packaging>
+
+    <name>dropauth</name>
+    <description>Hassle-free token based authentication for Dropwizard.</description>
+    <url>http://klickreform.github.io/dropkit/</url>
+    <inceptionYear>2015</inceptionYear>
+    <organization>
+        <name>KlickReform</name>
+        <url>http://www.klickreform.de</url>
+    </organization>
+
+    <licenses>
+        <license>
+            <name>GNU Lesser General Public License (LGPL), Version 3.0</name>
+            <url>https://www.gnu.org/licenses/lgpl.html</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <scm>
+        <url>https://github.com/KlickReform/dropkit</url>
+    </scm>
+
+    <!-- Set project properties -->
+    <properties>
+        <dropwizard.version>0.7.1</dropwizard.version>
+        <jar-name>dropauth</jar-name>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+<!-- ////// DEPENDENCIES ////// -->
+
+    <dependencies>
+        <!-- DropKit Utilities | http://klickreform.github.io/dropkit -->
+        <dependency>
+            <groupId>de.klickreform</groupId>
+            <artifactId>dropkit</artifactId>
+            <version>0.1</version>
+        </dependency>
+        <!-- Dropwizard Authentication Support | http://dropwizard.codahale.com/manual/auth/ -->
+        <dependency>
+            <groupId>io.dropwizard</groupId>
+            <artifactId>dropwizard-auth</artifactId>
+            <version>${dropwizard.version}</version>
+        </dependency>
+        <!-- Implementation of JOSE+JWT | https://bitbucket.org/nimbusds/nimbus-jose-jwt/wiki/Home -->
+        <dependency>
+            <groupId>com.nimbusds</groupId>
+            <artifactId>nimbus-jose-jwt</artifactId>
+            <version>2.26.1</version>
+        </dependency>
+        <!-- Hazelcast In-Memory Data Grid | https://github.com/hazelcast/hazelcast -->
+        <dependency>
+            <groupId>com.hazelcast</groupId>
+            <artifactId>hazelcast</artifactId>
+            <version>3.1.6</version>
+        </dependency>
+        <!-- JUnit Testing Framework | http://junit.org/ -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.11</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- Mockito Mocking Library | https://github.com/mockito/mockito -->
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-all</artifactId>
+            <version>1.10.19</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+<!-- ////// BUILD SETTINGS ////// -->
+    <build>
+        <!-- Set artifactId as filename for the shipping file -->
+        <finalName>${project.artifactId}</finalName>
+    </build>
+
+</project>

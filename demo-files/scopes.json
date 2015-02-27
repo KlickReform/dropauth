@@ -1,0 +1,12 @@
+[
+	{
+		"id": "1",
+		"designator": "myscope",
+		"description": "A simple scope."
+	},
+	{
+		"id": "2",
+		"designator": "otherscope",
+		"description": "A more complex scope."
+	}
+]

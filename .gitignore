@@ -1,0 +1,39 @@
+# Netbeans #
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+nbactions.xml
+nb-configuration.xml
+
+# Eclipse #
+.classpath
+.project
+.settings/
+
+# IntelliJ #
+*.iml
+*.ipr
+*.iws
+*.iml
+.idea/
+
+# Class Files #
+*.class
+
+# Maven #
+log/
+target/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+# OSX #
+.DS_Store
+.AppleDouble
+.LSOverride
+.Spotlight-V100
+.Trashes
