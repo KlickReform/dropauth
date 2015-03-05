@@ -15,7 +15,7 @@ public class DropauthAuthenticatorTest {
     public void authenticate() throws AuthenticationException {
         ResourceOwnerAuthProvider authProvider = Mockito.mock(ResourceOwnerAuthProvider.class);
         TokenService tokenService = Mockito.mock(SimpleTokenService.class);
-        AccessToken accessToken = new AccessToken("sometoken","owner",3600);
+        AccessToken accessToken = new AccessToken("sometoken","owner", "refreshToken", 3600);
         Mockito.doReturn(accessToken).when(tokenService).resolveToken("sometoken");
         ResourceOwner owner = Mockito.mock(ResourceOwner.class);
         Mockito.doReturn(owner).when(authProvider).identify("owner");

@@ -39,8 +39,8 @@ public class AuthorizationServerTest {
         ScopeSet scopeSet = ScopeSet.parse("scope1 scope2");
         Mockito.doReturn(scopeSet).when(scopeService).parseValidScopes("scope1 scope2");
         // Mock TokenService
-        AccessToken token = new AccessToken("token","owner",3600);
-        Mockito.doReturn(token).when(tokenService).createAccessToken(resourceOwner);
+        AccessToken token = new AccessToken("token","owner","refreshToken",3600);
+        Mockito.doReturn(token).when(tokenService).createAccessToken(client,resourceOwner,scopeSet);
         // Fake Request
         AuthorizationServer authServer = new AuthorizationServer(tokenService,resourceOwnerAuthProvider,scopeService,clientService);
         HttpServletRequest request = Mockito.mock(Request.class);

@@ -18,7 +18,6 @@ public class AccessTokenRequestValidator extends AbstractRequestValidator<HttpSe
     public AccessTokenRequestValidator() {
         // Grant Type is always required for token requests
         requiredParams.add(OAuthSettings.Params.GRANT_TYPE);
-        requiredParams.add(OAuthSettings.Params.SCOPE);
     }
 
     @Override
@@ -36,6 +35,10 @@ public class AccessTokenRequestValidator extends AbstractRequestValidator<HttpSe
         } else if(grantType.equals(OAuthSettings.GrantTypes.CLIENT_CREDENTIALS)) {
             // TODO: Implement Client Credentials Validation
             throw new InvalidGrantTypeException("Client Credentials Grant currently not supported.");
+        } else if(grantType.equals(OAuthSettings.GrantTypes.REFRESH)) {
+            // Refresh Token Grant
+            requiredParams.add(OAuthSettings.Params.REFRESH_TOKEN);
+            requiredParams.add(OAuthSettings.Params.CLIENT_ID);
         } else {
             throw new InvalidGrantTypeException("Unknown Grant Type: '" + grantType + "'");
         }

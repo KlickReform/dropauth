@@ -8,7 +8,7 @@ public class AccessTokenTest {
 
     @Test
     public void construct() {
-        AccessToken token = new AccessToken("tokenValue", "owner", 3600);
+        AccessToken token = new AccessToken("tokenValue", "owner", "refreshToken", 3600);
         assertTrue(token.getOwner().equals("owner"));
         assertTrue(token.getToken().equals("tokenValue"));
         assertTrue(token.getExpiresIn() == 3600);

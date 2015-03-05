@@ -21,6 +21,7 @@ public class AccessTokenRequest extends AbstractOAuthRequest implements OAuthReq
     private String username;
     private String password;
     private String scope;
+    private String refreshToken;
     private MultivaluedMap<String, String> formParams;
 
     public AccessTokenRequest(HttpServletRequest request, MultivaluedMap<String,String> formParams) throws MissingRequiredArgumentException, InvalidGrantTypeException {
@@ -36,7 +37,12 @@ public class AccessTokenRequest extends AbstractOAuthRequest implements OAuthReq
         this.clientId = formParams.getFirst(OAuthSettings.Params.CLIENT_ID);
         this.username = formParams.getFirst(OAuthSettings.Params.USERNAME);
         this.password = formParams.getFirst(OAuthSettings.Params.PASSWORD);
-        this.scope = formParams.getFirst(OAuthSettings.Params.SCOPE);
+        this.refreshToken = formParams.getFirst(OAuthSettings.Params.REFRESH_TOKEN);
+        if(formParams.getFirst(OAuthSettings.Params.SCOPE) == null) {
+            this.scope = "";
+        } else {
+            this.scope = formParams.getFirst(OAuthSettings.Params.SCOPE);
+        }
     }
 
     @Override
@@ -83,6 +89,14 @@ public class AccessTokenRequest extends AbstractOAuthRequest implements OAuthReq
 
     public void setScope(String scope) {
         this.scope = scope;
+    }
+
+    public String getRefreshToken() {
+        return refreshToken;
+    }
+
+    public void setRefreshToken(String refreshToken) {
+        this.refreshToken = refreshToken;
     }
 
 }

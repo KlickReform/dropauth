@@ -8,7 +8,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>de.klickreform</groupId>
     <artifactId>dropauth</artifactId>
-    <version>0.1</version>
+    <version>0.1.1</version>
     <packaging>jar</packaging>
 
     <name>dropauth</name>
@@ -46,7 +46,7 @@
         <dependency>
             <groupId>de.klickreform</groupId>
             <artifactId>dropkit</artifactId>
-            <version>0.1</version>
+            <version>0.1.1</version>
         </dependency>
         <!-- Dropwizard Authentication Support | http://dropwizard.codahale.com/manual/auth/ -->
         <dependency>

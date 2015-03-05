@@ -1,6 +1,6 @@
 package de.klickreform.dropauth.oauth2.client;
 
-import de.klickreform.dropauth.oauth2.owner.Principal;
+import de.klickreform.dropkit.models.Principal;
 
 /**
  * Interface for registered OAuthClient Applications.

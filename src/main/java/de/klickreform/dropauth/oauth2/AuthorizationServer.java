@@ -1,5 +1,6 @@
 package de.klickreform.dropauth.oauth2;
 
+import de.klickreform.dropauth.OAuthSettings;
 import de.klickreform.dropauth.exceptions.InvalidScopeException;
 import de.klickreform.dropauth.oauth2.client.OAuthClientService;
 import de.klickreform.dropauth.oauth2.owner.ResourceOwnerAuthProvider;
@@ -48,23 +49,27 @@ public class AuthorizationServer {
         // Parse the HttpServletRequest and check if it's a valid AccessTokenRequest (throws MissingRequiredArgumentException)
         AccessTokenRequest tokenRequest = new AccessTokenRequest(httpRequest,formParams);
 
-        // Authenticate Client and ResourceOwner (throws NotFoundException)
-        OAuthClient client = clientService.authenticate(tokenRequest.getClientId());
-        ResourceOwner resourceOwner = resourceOwnerAuthProvider.authenticate(tokenRequest.getUsername(),tokenRequest.getPassword());
-
         // Parse and validate requested Scopes (throws InvalidScopeException)
-        ScopeSet scopeSet = scopeService.parseValidScopes(tokenRequest.getScope());
+        ScopeSet scopeSet = new ScopeSet();
+        if(!tokenRequest.getScope().equals("")) {
+            scopeSet = scopeService.parseValidScopes(tokenRequest.getScope());
+        }
 
-        // Create AccessToken using the TokenService
-        AccessToken token = tokenService.createAccessToken(resourceOwner);
+        // Issue the Access Token, according to the Grant Type
+        AccessToken token;
+        if(tokenRequest.getGrantType().equals(OAuthSettings.GrantTypes.REFRESH)) {
+            // Issue AccessToken for RefreshToken
+            OAuthClient client = clientService.authenticate(tokenRequest.getClientId());
+            token = tokenService.refreshToken(client, tokenRequest.getRefreshToken());
+        } else {
+            // Authenticate Client and ResourceOwner (throws NotFoundException)
+            OAuthClient client = clientService.authenticate(tokenRequest.getClientId());
+            ResourceOwner resourceOwner = resourceOwnerAuthProvider.authenticate(tokenRequest.getUsername(),tokenRequest.getPassword());
+            token = tokenService.createAccessToken(client, resourceOwner, scopeSet);
+        }
 
-        // Build and return Response
-        AccessTokenResponse response = new AccessTokenResponse();
-        response.setAccessToken(token.getToken());
-        response.setExpiresIn(token.getExpiresIn());
-        response.setTokenType(token.getType());
-        return response;
-
+        // Build and return AccessTokenResponse
+        return token.toResponse();
     }
 
     public TokenService getTokenService() {

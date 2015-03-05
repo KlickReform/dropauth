@@ -1,5 +1,7 @@
 package de.klickreform.dropauth.oauth2.response;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import java.io.Serializable;
 
 /**
@@ -8,6 +10,7 @@ import java.io.Serializable;
  *
  * @author Benjamin Bestmann
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class AccessTokenResponse implements Serializable {
 
     private String accessToken;
